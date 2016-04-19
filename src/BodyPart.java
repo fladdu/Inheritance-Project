@@ -1,6 +1,6 @@
 
 public abstract class BodyPart{
-	private double wieght;
+	private double weight;
 	private String location;
 	private boolean isEssential;
 
