@@ -25,5 +25,6 @@ public abstract class Limb extends BodyPart{
 		
 		return 0;
 	}
-	
+	public abstract void doFunction(double value);
+
 }

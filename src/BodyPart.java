@@ -1,30 +1,33 @@
 
-public abstract class BodyPart {
-	private double weight;
+public abstract class BodyPart{
+	private double wieght;
 	private String location;
 	private boolean isEssential;
-	
+
 	public void setWeight(double value){
-		
+		//TODO: add stuff
 	}
+
 	public void setLocation(String value){
-		
+		//TODO: add stuff
 	}
+
 	public void setEssential(boolean value){
-		
+		//TODO: add stuff
 	}
-	public boolean getEssential(){
-		
-		return true;
-	}
-	public double getWeight(){
-		
+
+	public double getWeight(double value){
 		return 0;
+		//TODO: add stuff
 	}
-	public String getLocation(){
+
+	public String getLocation(String value){
 		return null;
+		//TODO: add stuff
 	}
-	public void doFunction(){
-		
+
+	public boolean getEssential(boolean value){
+		//TODO: add stuff
+		return false;
 	}
 }

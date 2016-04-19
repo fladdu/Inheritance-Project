@@ -1,4 +1,5 @@
 
+
 public abstract class Organ extends BodyPart {
 	private String bodySystem;
 	
@@ -9,4 +10,8 @@ public abstract class Organ extends BodyPart {
 		
 		return null;
 	}
+	public abstract void doFunction();
+	
 }
+
+
