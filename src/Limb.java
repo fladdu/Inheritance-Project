@@ -2,29 +2,38 @@
 public abstract class Limb extends BodyPart{
 	private double strength; 
 	private double length;
-	private int numberOfJoints;
 	
-	
+/*	pre:
+	post:
+*/
 	public void setStrength(double value){
-		
+		strength = value;
 	}
+
+/*	pre:
+	post:
+*/
 	public void setLength(double value){
-		
+		length = value
 	}
+
+/*	pre:
+	post:
+*/
 	public double getStrenght(){
-		
-		return 0;
+		return zstrength
 	}
+
+/*	pre:
+	post:
+*/
 	public double getLength(){
-		return 0;
+		return this.length;
 	}
-	public void setNumJoints(int value){
-		
-	}
-	public int getNumbJoints(){
-		
-		return 0;
-	}
+
+/*	pre:
+	post:
+*/
 	public abstract void doFunction(double value);
 
 }
