@@ -64,9 +64,6 @@ public class Heart extends Organ{
 		h=40;	
 		rec.draw();
 	}
-	public void paint(Graphics g){
-		
-	}
 }
 class draw extends JPanel{
 	public draw(){
