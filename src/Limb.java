@@ -14,21 +14,21 @@ public abstract class Limb extends BodyPart{
 	post:
 */
 	public void setLength(double value){
-		length = value
+		length = value;
 	}
 
 /*	pre:
 	post:
 */
 	public double getStrenght(){
-		return zstrength
+		return strength;
 	}
 
 /*	pre:
 	post:
 */
 	public double getLength(){
-		return this.length;
+		return length;
 	}
 
 /*	pre:
