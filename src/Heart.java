@@ -47,7 +47,6 @@ public class Heart extends Organ{
 			rec.draw();	
 			rec.add(BPMLabel);
 			rec.add(pumpButton);
-			rec.add(heartIMG);
 		Container c = heartGUI.getContentPane();
 			c.add(rec);
 			//c.add(heartIMG);
@@ -61,7 +60,7 @@ public class Heart extends Organ{
 		w = 40;
 		h = 40;
 		x = 130;
-		y = 35
+		y = 35;
 		rec.draw();
 	}
 }
