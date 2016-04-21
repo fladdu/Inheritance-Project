@@ -13,7 +13,7 @@ public class Heart extends Organ{
 	JButton pumpButton = new JButton();
 	JLabel BPMLabel = new JLabel();
 	draw rec = new draw();
-	public static int w = 50 ,h = 50;
+	public static int w = 50 ,h = 50, x = 125, y = 30;
 	double BPM = 0;
 	public Heart(double weight){
 		setWeight(weight);
@@ -32,16 +32,14 @@ public class Heart extends Organ{
 					System.out.println(count);
 				}
 				public void mouseReleased (MouseEvent e){
-					w=50;
-					h=50;
+					w = 50;
+					h = 50;
+					x = 125;
+					y = 30;
 					rec.draw();
 				}
 		});
 		
-		JLabel heartIMG = new JLabel(new ImageIcon("heart2.jpg"));
-			heartIMG.setBounds(125, 100, 250, 250);
-			heartIMG.setAlignmentX(JLabel.CENTER_ALIGNMENT);
-			heartIMG.setVisible(true);
 		GUI heartGUI = new GUI("Heart");
 			heartGUI.setSize(320, 320);
 			heartGUI.setVisible(true);
@@ -60,8 +58,10 @@ public class Heart extends Organ{
 		BPM++;
 		BPMLabel.setText("BPM: " + Double.toString(BPM));
 		//BPMLabel.setText();
-		w=40;
-		h=40;	
+		w = 40;
+		h = 40;
+		x = 130;
+		y = 35
 		rec.draw();
 	}
 	public void paint(Graphics g){
@@ -78,6 +78,6 @@ class draw extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.RED);
-		g.fillRect(125, 30, Heart.w, Heart.h);		
+		g.fillRect(Heart.x, Heart.y, Heart.w, Heart.h);		
 	}
 }
