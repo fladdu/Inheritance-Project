@@ -15,9 +15,9 @@ public class Leg extends Limb{
 	static DrawLeg leg = new DrawLeg();
 	static double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;
 	public Leg(double strength, double weight, double length){
-		//TODO: init strength length and weight and location and essential somewhere up the high-archie
-		//figure out how to strength --> speed
-		//also do gui stuff
+		//TODO: init strength length and weight and location and essential somewhere up the high-archie DONE
+		//figure out how to strength --> speed....or not
+		//also do gui stuff DONE
 		setStrength(strength);
 		setWeight(weight);
 		setLength(length);

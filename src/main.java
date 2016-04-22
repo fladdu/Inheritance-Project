@@ -7,18 +7,35 @@ public class main {
 	static JButton ButtonHeart = new JButton();
 	static JButton ButtonArm = new JButton();
 	static JButton ButtonLeg = new JButton();
+	static JButton ButtonStom = new JButton();
+	static JButton ButtonLung = new JButton();
 	
 	public static void main(String[] args) {
-		GUI GUI = new GUI("Grocery Store Manager");
+		GUI GUI = new GUI("Black Market Bodypart Store Manager");
 		GUI.setVisible(true);
 		Container c = GUI.getContentPane();
 		JPanel p = new JPanel();
 		p.add(Box.createRigidArea(new Dimension(0,5)));
+
 		ButtonHeart.setText("Heart");
 		ButtonHeart.setPreferredSize(new Dimension(200, 20));
 		ButtonHeart.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					Heart heart = new Heart(100);
+				}
+			});
+		ButtonLung.setText("Lung");
+		ButtonLung.setPreferredSize(new Dimension(200, 20));
+		ButtonLung.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					Lung lung = new Lung(100, 100);
+				}
+			});
+		ButtonStom.setText("Stomach");
+		ButtonStom.setPreferredSize(new Dimension(200, 20));
+		ButtonStom.addActionListener(new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					Stomach stomach = new Stomach(100, 150);
 				}
 			});
 		ButtonArm.setText("Arm");
@@ -39,6 +56,8 @@ public class main {
 		p.add(ButtonHeart);
 		p.add(ButtonArm);
 		p.add(ButtonLeg);
+		p.add(ButtonLung);
+		p.add(ButtonStom);
 		c.add(p);
 		
 		
