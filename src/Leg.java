@@ -1,11 +1,19 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 import java.awt.geom.*;
-
-import javax.swing.JPanel;
+import java.util.TimerTask;
+import java.awt.*;
+import javax.swing.*;
 
 public class Leg extends Limb{
 	private double runningSpeed;
+	JButton kickButton = new JButton();
+	Timer timer;
 	static DrawLeg leg = new DrawLeg();
+	static double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;
 	public Leg(double strength, double weight, double length){
 		//TODO: init strength length and weight and location and essential somewhere up the high-archie
 		//figure out how to strength --> speed
@@ -15,15 +23,52 @@ public class Leg extends Limb{
 		setLength(length);
 		setEssential(false);
 		GUI legGUI = new GUI("Arm");
-			legGUI.setSize(320, 320);
+			legGUI.setSize(1080, 320);
 			legGUI.setVisible(true);
 		Container c = legGUI.getContentPane();
-		c.add(legGUI);
+		c.add(leg);
+		kickButton.setText("Kick");
+		kickButton.setBounds(900,20,75,20);
+		kickButton.addMouseListener(new MouseAdapter(){
+				public void mousePressed(MouseEvent e){
+					doFunction(0);
+					timer.start();
+				}
+				public void mouseReleased (MouseEvent e){
+					angle = 0.6; 
+					xCord = 70;
+					yCord = -45;
+					leg.draw();
+				}
+		});	
+		leg.add(kickButton);
+		timer = new Timer(1, new ActionListener(){
+				public void actionPerformed(ActionEvent e){
+					//double x,y;
+					xCordBall+=4;
+					yCordBall = 0.001 * Math.pow(xCordBall - 420,2) + 150;
+					leg.draw();
+					if (yCordBall+55>= 315){
+						try {
+							Thread.sleep(200);
+						} catch (InterruptedException e1) {
+							e1.printStackTrace();
+						}
+						xCordBall = 105;
+						yCordBall = 250;
+						leg.draw();
+						timer.stop();
+					}
+				}
+			});
+		//TimerTask kick = new TimerSchedulePeriod();
 	}
 
 	public void doFunction(double input){
-		//TODO: check if input is less than speed
-		//do stuff
+		angle = -0.2; 
+		xCord = 80;
+		yCord = 17;
+		leg.draw();
 	}
 }
 
@@ -40,19 +85,23 @@ class DrawLeg extends JPanel{
 		g.setColor(new Color(242,225,189));//skin-color
 		Rectangle2D upper = new Rectangle2D.Double(0,0,85,10);
 		Rectangle2D lower = new Rectangle2D.Double(0,0,85,10);//65 110
-		Ellipse2D muscle = new Ellipse2D.Double(0,0, 20, 25);
-		AffineTransform transform = new AffineTransform();
-		//First Rectangle	
-			transform.rotate(0.7);
-			transform.translate(40, 180);
+		Ellipse2D ball = new Ellipse2D.Double(Leg.xCordBall,Leg.yCordBall, 25, 25);
+		Ellipse2D foot = new Ellipse2D.Double(80,-15, 10, 25);
+		AffineTransform transform = new AffineTransform();	
+			transform.rotate(1.2);
+			transform.translate(120, -10);
 			Shape rotatedUpper = transform.createTransformedShape(upper);
 		g2d.fill(rotatedUpper);
 		//Second Rectangle
-			transform.rotate(Arm.angle);
-			transform.translate(Arm.xCord,Arm.yCord);
+			transform.rotate(Leg.angle);
+			transform.translate(Leg.xCord,Leg.yCord);
 			Shape rotatedLower = transform.createTransformedShape(lower);
+			Shape rotatedFoot = transform.createTransformedShape(foot);
 		g2d.fill(rotatedLower);
-		g.fillOval(145,105,15,15);
+		g2d.fill(rotatedFoot);
+		g.fillOval(69,178,15,15);
+		g.setColor(Color.BLACK);
+		g2d.fill(ball);
 
 		
 		
