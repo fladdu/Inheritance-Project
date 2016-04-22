@@ -13,7 +13,7 @@ public class main {
 		GUI.setVisible(true);
 		Container c = GUI.getContentPane();
 		JPanel p = new JPanel();
-		p.add(Box.createRigidArea(new Dimension(0,5)));
+		p.setLayout(new GridLayout());
 		ButtonHeart.setText("Heart");
 		ButtonHeart.setPreferredSize(new Dimension(200, 20));
 		ButtonHeart.addActionListener(new ActionListener(){
@@ -35,7 +35,6 @@ public class main {
 					Leg leg = new Leg(100, 15, 85);
 				}
 			});
-		
 		p.add(ButtonHeart);
 		p.add(ButtonArm);
 		p.add(ButtonLeg);
