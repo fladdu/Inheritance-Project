@@ -13,7 +13,7 @@ public class Arm extends Limb implements ChangeListener{
 	JButton liftButton = new JButton();
 	JSlider strSlider = new JSlider(JSlider.HORIZONTAL, 0, 100 ,20);
 	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm
-	static int xCordD1 = 55, xCordD2 =65, yCordD1 = 155, yCordD2 = 115, dumbellSize = 20;
+	static int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;
 	static int buffer = 1000;
 	public Arm(double length){
 		setWeight(strSlider.getValue()/4);
@@ -25,9 +25,9 @@ public class Arm extends Limb implements ChangeListener{
 			armGUI.setSize(320, 320);
 			armGUI.setVisible(true);
 		arm.draw();
-		strSlider.setBounds(50, 180, 200,50);
-		strSlider.setMajorTickSpacing(250);
-	    strSlider.setMinorTickSpacing(50);
+		strSlider.setBounds(50, 195, 200,50);
+		strSlider.setMajorTickSpacing(20);
+	    strSlider.setMinorTickSpacing(2);
 	    strSlider.setPaintTicks(true);
 	    strSlider.setPaintLabels(true);
 	    strSlider.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
@@ -42,10 +42,10 @@ public class Arm extends Limb implements ChangeListener{
 					xCord= 0.0;
 					yCord= -8.0;
 					angle = -2.9;
-					xCordD1 = 55;
-					xCordD2 = 65;
-					yCordD1 = 155;
-					yCordD2 = 115;		
+					xCordD1 = 67;
+					xCordD2 = 77;
+					yCordD1 = 168;
+					yCordD2 = 125;		
 					buffer = 1000;
 					arm.draw();
 				}
@@ -67,10 +67,10 @@ public class Arm extends Limb implements ChangeListener{
 		angle = -1.4;
 		xCord = 0.0;
 		yCord = 0.0;
-		xCordD1 = 85;
-		xCordD2 = 122;
-		yCordD1 = 20;
-		yCordD2 = 27;
+		xCordD1 = 93;
+		xCordD2 = 136;
+		yCordD1 = 31;
+		yCordD2 = 39;
 		buffer = 0;
 		arm.draw();
 	}
@@ -111,14 +111,14 @@ class DrawArm extends JPanel{
 		g2d.fill(rotatedLower);
 		g.fillOval(145,105,15,15);
 		g.setColor(Color.BLACK);
-		Rectangle2D dumbell = new Rectangle2D.Double(0, 0, 10, 30);
+		Rectangle2D dumbell = new Rectangle2D.Double(0, -10, 5, 50);
 		transform.rotate(0.7);
 		transform.translate(67, -60);
 		Shape rotatedDumbell = transform.createTransformedShape(dumbell);
 		g2d.fill(rotatedDumbell);
 		//I WAS TRYING STUFF TO MAKE IT CENTER vvvvvv//
-		g.fillOval(Arm.xCordD1+((Arm.dumbellSize-20)/2), Arm.yCordD1+(Arm.dumbellSize-20), Arm.dumbellSize, Arm.dumbellSize);//55,155 // 85,20
-		g.fillOval(Arm.xCordD2, Arm.yCordD2, Arm.dumbellSize, Arm.dumbellSize);//65,115// 122, 27
+		g.fillOval(Arm.xCordD1-(Arm.dumbellSize/2), Arm.yCordD1-(Arm.dumbellSize/2), Arm.dumbellSize, Arm.dumbellSize);//55,155 // 85,20
+		g.fillOval(Arm.xCordD2-(Arm.dumbellSize/2), Arm.yCordD2-(Arm.dumbellSize/2), Arm.dumbellSize, Arm.dumbellSize);//65,115// 122, 27
 		transform.rotate(-0.7);
 		transform.translate(-92 + Arm.buffer, 35);
 		Shape rotatedMuscle = transform.createTransformedShape(muscle);
