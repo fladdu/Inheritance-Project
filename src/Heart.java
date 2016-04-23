@@ -21,12 +21,8 @@ public class Heart extends Organ implements ChangeListener{
 	JSlider weightSlider = new JSlider(JSlider.HORIZONTAL, 0, 1000,450);
 	public static int w = 50 ,h = 50, x = 125, y = 30;
 	double BPM = 0;
+	double temp = 0;
 	double rates[] = new double[10];
-	Timer bpm = new Timer(1, new ActionListener(){
-		public void actionPerformed (Event e) {
-			
-		}
-	})
 
 	//construct
 	public Heart(double weight){
@@ -50,8 +46,6 @@ public class Heart extends Organ implements ChangeListener{
 		pumpButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					doFunction();
-					int count = e.getClickCount();
-					System.out.println(count);
 				}
 				public void mouseReleased (MouseEvent e){
 					w = (int)getWeight()/5;
@@ -61,6 +55,28 @@ public class Heart extends Organ implements ChangeListener{
 					rec.draw();
 				}
 		});
+
+		Timer bpm = new Timer(1000, new ActionListener(){
+			public void actionPerformed (ActionEvent e) {
+					for(int i = 0; i < rates.length - 1; i++){
+						rates[i] = rates[i+1];
+					}	
+
+					rates[rates.length - 1] = temp * 60;
+					temp = 0;
+					BPM = 0;
+
+					for(int i = 0; i < rates.length; i++){
+						BPM += rates[i];
+
+					}
+
+					BPM /= 10;
+					BPMLabel.setText("BPM: " + Double.toString(BPM));
+					rec.draw();
+			}
+		});
+		bpm.start();
 		
 		GUI heartGUI = new GUI("Heart");
 			heartGUI.setSize(320, 320);
@@ -76,14 +92,15 @@ public class Heart extends Organ implements ChangeListener{
 		heartGUI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
 				main.GUI.setVisible(true);
+				bpm.stop();
 			}
 		});	
+
 	}
 
 	@Override
 	public void doFunction(){
-		BPM++;
-		BPMLabel.setText("BPM: " + Double.toString(BPM));
+		temp++;
 		//BPMLabel.setText();
 		w = (int)getWeight()/5 - 10;
 		h = w;
