@@ -11,7 +11,9 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
-public class Heart extends Organ{
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+public class Heart extends Organ implements ChangeListener{
 	JButton pumpButton = new JButton();
 	JLabel BPMLabel = new JLabel();
 	draw rec = new draw();
@@ -24,7 +26,13 @@ public class Heart extends Organ{
 		setLocation("Inside Chest");
 		setEssential(true);
 		
-		weightSlider.setBounds(50, 170, 200,20);
+		weightSlider.setBounds(50, 150, 200,50);
+		weightSlider.setMajorTickSpacing(250);
+	    weightSlider.setMinorTickSpacing(50);
+	    weightSlider.setPaintTicks(true);
+	    weightSlider.setPaintLabels(true);
+	    weightSlider.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
+	    weightSlider.addChangeListener(this);
 		BPMLabel.setText("BPM: " + Double.toString(BPM));
 		BPMLabel.setBounds(10,10,70,20);
 		pumpButton.setText("Pump");
@@ -36,8 +44,8 @@ public class Heart extends Organ{
 					System.out.println(count);
 				}
 				public void mouseReleased (MouseEvent e){
-					w = 50;
-					h = 50;
+					w = (int)getWeight()/5;;
+					h = w;
 					x = 125;
 					y = 30;
 					rec.draw();
@@ -66,11 +74,19 @@ public class Heart extends Organ{
 		BPM++;
 		BPMLabel.setText("BPM: " + Double.toString(BPM));
 		//BPMLabel.setText();
-		w = 40;
-		h = 40;
+		w = (int)getWeight()/5 - 10;
+		h = w;
 		x = 130;
 		y = 35;
 		rec.draw();
+	}
+	@Override
+	public void stateChanged(ChangeEvent e) {
+		setWeight(weightSlider.getValue());
+		w = (int)getWeight()/5;
+		h = w;
+		rec.draw();
+		System.out.println(w +" " + getWeight());
 	}
 }
 class draw extends JPanel{

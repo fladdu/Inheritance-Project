@@ -31,7 +31,7 @@ public abstract class BodyPart{
 /*	pre:
 	post:
 */
-	public double getWeight(double value){
+	public double getWeight(){
 		//TODO: add stuff
 		return weight;
 	}
@@ -39,7 +39,7 @@ public abstract class BodyPart{
 /*	pre:
 	post:
 */
-	public String getLocation(String value){
+	public String getLocation(){
 		//TODO: add stuff
 		return location;
 	}
@@ -47,7 +47,7 @@ public abstract class BodyPart{
 /*	pre:
 	post:
 */
-	public boolean getEssential(boolean value){
+	public boolean getEssential(){
 		//TODO: add stuff
 		return isEssential;
 	}

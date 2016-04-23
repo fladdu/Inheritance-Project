@@ -53,7 +53,7 @@ public class main {
 		ButtonArm.setAlignmentX(Component.CENTER_ALIGNMENT);
 		ButtonArm.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					Arm arm = new Arm(100, 15, 85);
+					Arm arm = new Arm(85);
 					GUI.setVisible(false);
 				}
 			});

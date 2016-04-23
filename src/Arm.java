@@ -5,16 +5,19 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.awt.geom.*;
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
 
-public class Arm extends Limb{
+public class Arm extends Limb implements ChangeListener{
 	DrawArm arm = new DrawArm();
 	JButton liftButton = new JButton();
+	JSlider strSlider = new JSlider(JSlider.HORIZONTAL, 0, 100 ,20);
 	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm
-	static int xCordD1 = 55, xCordD2 =65, yCordD1 = 155, yCordD2 = 115;
+	static int xCordD1 = 55, xCordD2 =65, yCordD1 = 155, yCordD2 = 115, dumbellSize = 20;
 	static int buffer = 1000;
-	public Arm(double strength, double weight, double length){
-		setWeight(weight);
-		setStrength(strength);
+	public Arm(double length){
+		setWeight(strSlider.getValue()/4);
+		setStrength(strSlider.getValue());
 		setLength(length);
 		setEssential(false);
 		
@@ -22,8 +25,15 @@ public class Arm extends Limb{
 			armGUI.setSize(320, 320);
 			armGUI.setVisible(true);
 		arm.draw();
+		strSlider.setBounds(50, 180, 200,50);
+		strSlider.setMajorTickSpacing(250);
+	    strSlider.setMinorTickSpacing(50);
+	    strSlider.setPaintTicks(true);
+	    strSlider.setPaintLabels(true);
+	    strSlider.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
+	    strSlider.addChangeListener(this);
 		liftButton.setText("Lift");
-		liftButton.setBounds(115,200,75,20);
+		liftButton.setBounds(115,240,75,20);
 		liftButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					doFunction(0);
@@ -42,6 +52,7 @@ public class Arm extends Limb{
 		});	
 		Container c = armGUI.getContentPane();
 		arm.add(liftButton);
+		arm.add(strSlider);
 		c.add(arm);
 		armGUI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
@@ -61,6 +72,14 @@ public class Arm extends Limb{
 		yCordD1 = 20;
 		yCordD2 = 27;
 		buffer = 0;
+		arm.draw();
+	}
+
+	@Override
+	public void stateChanged(ChangeEvent arg0) {
+		dumbellSize = strSlider.getValue()/2;
+		setStrength(strSlider.getValue());
+		setWeight(strSlider.getValue()/4);
 		arm.draw();
 	}
 
@@ -97,8 +116,9 @@ class DrawArm extends JPanel{
 		transform.translate(67, -60);
 		Shape rotatedDumbell = transform.createTransformedShape(dumbell);
 		g2d.fill(rotatedDumbell);
-		g.fillOval(Arm.xCordD1, Arm.yCordD1, 20, 20);//55,155 // 85,20
-		g.fillOval(Arm.xCordD2, Arm.yCordD2, 20, 20);//65,115// 122, 27
+		//I WAS TRYING STUFF TO MAKE IT CENTER vvvvvv//
+		g.fillOval(Arm.xCordD1+((Arm.dumbellSize-20)/2), Arm.yCordD1+(Arm.dumbellSize-20), Arm.dumbellSize, Arm.dumbellSize);//55,155 // 85,20
+		g.fillOval(Arm.xCordD2, Arm.yCordD2, Arm.dumbellSize, Arm.dumbellSize);//65,115// 122, 27
 		transform.rotate(-0.7);
 		transform.translate(-92 + Arm.buffer, 35);
 		Shape rotatedMuscle = transform.createTransformedShape(muscle);
