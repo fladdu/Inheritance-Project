@@ -5,16 +5,24 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.*;
+
 public class Stomach extends Organ{
+
+	//declaring vars
 	JButton eatButton = new JButton();
 	JLabel capLabel = new JLabel();
 	drawStomach rec = new drawStomach();
 	public static int w = 50 ,h = 50, x = 125, y = 40, delta = 0;
 	int capacity;
+
+	/*	
+	pre:
+	post:
+    */
 	public Stomach(double weight, int capacity){
-		//declaring instance vars
+		
+		//instance vars
 		setWeight(weight);
 		this.capacity = capacity;
 		setBodySystem("Nom-ulatory System");
@@ -42,6 +50,7 @@ public class Stomach extends Organ{
 		capLabel.setBounds(10,10,120,20);
 		eatButton.setText("Eateth");
 		eatButton.setBounds(115,200,75,20);
+
 		eatButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					if (w < capacity){
@@ -57,23 +66,27 @@ public class Stomach extends Organ{
 				}
 		});
 		
-		//packing (correct term?) gui components
+		//packing gui components
 		GUI stomGUI = new GUI("Stomach");
-			stomGUI.setSize(320, 320);
-			stomGUI.setVisible(true);
+		stomGUI.setSize(320, 320);
+		stomGUI.setVisible(true);
 		
-			rec.draw();	
-			rec.add(capLabel);
-			rec.add(eatButton);
+		rec.draw();	
+		rec.add(capLabel);
+		rec.add(eatButton);
 		Container c = stomGUI.getContentPane();
-			c.add(rec);	
+		c.add(rec);	
 		stomGUI.addWindowListener(new WindowAdapter(){
-				public void windowClosing(WindowEvent e){
-					main.GUI.setVisible(true);
-				}
-			});	
+			public void windowClosing(WindowEvent e){
+				main.GUI.setVisible(true);
+			}
+		});	
 	}
 
+	/*	
+	pre:
+	post:
+    */
 	@Override
 	public void doFunction(){
 		if (Math.random() > .60){
@@ -85,7 +98,7 @@ public class Stomach extends Organ{
 		capLabel.setText("Capacity: " + (((double)w / capacity) * 100) + "%");
 		rec.draw();
 		
-	}
+	}//dofunc
 }//class stom
 
 

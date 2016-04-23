@@ -9,22 +9,31 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class Arm extends Limb implements ChangeListener{
+
+	//instance vars
 	DrawArm arm = new DrawArm();
 	JButton liftButton = new JButton();
 	JSlider strSlider = new JSlider(JSlider.HORIZONTAL, 0, 100 ,20);
-	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm
-	static int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;
-	static int buffer = 1000;
+	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm ////////MORE ENCAP
+	static int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;//ENCAPSULATION
+	static int buffer = 1000;//ENCAP
+
+	/*	
+	pre:
+	post:
+    */
 	public Arm(double length){
+		//setting vars
 		setWeight(strSlider.getValue()/4);
 		setStrength(strSlider.getValue());
 		setLength(length);
 		setEssential(false);
 		
 		GUI armGUI = new GUI("Arm");
-			armGUI.setSize(320, 320);
-			armGUI.setVisible(true);
+		armGUI.setSize(320, 320);
+		armGUI.setVisible(true);
 		arm.draw();
+
 		strSlider.setBounds(50, 195, 200,50);
 		strSlider.setMajorTickSpacing(20);
 	    strSlider.setMinorTickSpacing(2);
@@ -32,8 +41,10 @@ public class Arm extends Limb implements ChangeListener{
 	    strSlider.setPaintLabels(true);
 	    strSlider.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
 	    strSlider.addChangeListener(this);
+
 		liftButton.setText("Lift");
 		liftButton.setBounds(115,240,75,20);
+
 		liftButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					doFunction(0);
@@ -50,6 +61,7 @@ public class Arm extends Limb implements ChangeListener{
 					arm.draw();
 				}
 		});	
+
 		Container c = armGUI.getContentPane();
 		arm.add(liftButton);
 		arm.add(strSlider);
@@ -61,6 +73,11 @@ public class Arm extends Limb implements ChangeListener{
 		});	
 	}
 
+	/*	
+	pre:
+	post:
+    */
+    @Override
 	public void doFunction(double input){ //REMOVED INPUT FOR NOW
 		//TODO: check if input is less than lifting stuff
 		//do stuff
@@ -75,6 +92,10 @@ public class Arm extends Limb implements ChangeListener{
 		arm.draw();
 	}
 
+	/*	
+	pre:
+	post:
+    */
 	@Override
 	public void stateChanged(ChangeEvent arg0) {
 		dumbellSize = strSlider.getValue()/2;
@@ -83,7 +104,9 @@ public class Arm extends Limb implements ChangeListener{
 		arm.draw();
 	}
 
-}
+}//class
+
+
 class DrawArm extends JPanel{
 	public DrawArm(){
 		setLayout(null);

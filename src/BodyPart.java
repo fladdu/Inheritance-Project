@@ -8,7 +8,6 @@ public abstract class BodyPart{
 	post:
 */
 	public void setWeight(double value){
-		//TODO: add stuff
 		weight = value;
 	}
 
@@ -16,7 +15,6 @@ public abstract class BodyPart{
 	post:
 */
 	public void setLocation(String value){
-		//TODO: add stuff
 		location = value;
 	}
 
@@ -24,7 +22,6 @@ public abstract class BodyPart{
 	post:
 */
 	public void setEssential(boolean value){
-		//TODO: add stuff
 		isEssential = value;
 	}
 
@@ -32,7 +29,6 @@ public abstract class BodyPart{
 	post:
 */
 	public double getWeight(){
-		//TODO: add stuff
 		return weight;
 	}
 
@@ -40,7 +36,6 @@ public abstract class BodyPart{
 	post:
 */
 	public String getLocation(){
-		//TODO: add stuff
 		return location;
 	}
 
@@ -48,7 +43,6 @@ public abstract class BodyPart{
 	post:
 */
 	public boolean getEssential(){
-		//TODO: add stuff
 		return isEssential;
 	}
 }

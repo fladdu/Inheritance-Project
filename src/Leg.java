@@ -14,23 +14,31 @@ public class Leg extends Limb{
 	private double runningSpeed;
 	JButton kickButton = new JButton();
 	Timer timer;
-	static DrawLeg leg = new DrawLeg();
-	static double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;
+	DrawLeg leg = new DrawLeg();
+	static double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;//ENCAPSULATION
+	
+	/*	
+	pre:
+	post:
+    */
 	public Leg(double strength, double weight, double length){
-		//TODO: init strength length and weight and location and essential somewhere up the high-archie DONE
-		//figure out how to strength --> speed....or not
-		//also do gui stuff DONE
+
+		//setting vars
 		setStrength(strength);
 		setWeight(weight);
 		setLength(length);
 		setEssential(false);
+
 		GUI legGUI = new GUI("Arm");
-			legGUI.setSize(1080, 320);
-			legGUI.setVisible(true);
+		legGUI.setSize(1080, 320);
+		legGUI.setVisible(true);
+
 		Container c = legGUI.getContentPane();
 		c.add(leg);
+
 		kickButton.setText("Kick");
 		kickButton.setBounds(900,20,75,20);
+
 		kickButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					doFunction(0);
@@ -43,7 +51,9 @@ public class Leg extends Limb{
 					leg.draw();
 				}
 		});	
+
 		leg.add(kickButton);
+
 		timer = new Timer(1, new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					//double x,y;
@@ -63,6 +73,7 @@ public class Leg extends Limb{
 					}
 				}
 			});
+		
 		legGUI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
 				main.GUI.setVisible(true);
@@ -70,6 +81,10 @@ public class Leg extends Limb{
 		});	
 	}
 
+	/*	
+	pre:
+	post:
+    */
 	public void doFunction(double input){
 		angle = -0.2; 
 		xCord = 80;

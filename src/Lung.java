@@ -5,14 +5,19 @@ import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
-
 import javax.swing.*;
+
 public class Lung extends Organ{
 	JButton breathButton = new JButton();
 	JLabel capLabel = new JLabel();
 	drawLung rec = new drawLung();
 	public static int w = 50 ,h = 50, x = 125, y = 40, delta = 0;
 	int capacity;
+
+	/*	
+	pre:
+	post:
+    */
 	public Lung(double weight, int capacity){
 		//declaring instance vars
 		setWeight(weight);
@@ -43,6 +48,7 @@ public class Lung extends Organ{
 		capLabel.setBounds(10,10,120,20);
 		breathButton.setText("Breath");
 		breathButton.setBounds(115,200,75,20);
+
 		breathButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					delta = 2;
@@ -52,23 +58,29 @@ public class Lung extends Organ{
 				}
 		});
 		
-		//packing (correct term?) gui components
+		//packing gui components
 		GUI lungGUI = new GUI("Lung");
-			lungGUI.setSize(320, 320);
-			lungGUI.setVisible(true);
+		lungGUI.setSize(320, 320);
+		lungGUI.setVisible(true);
 		
-			rec.draw();	
-			rec.add(capLabel);
-			rec.add(breathButton);
+		rec.draw();	
+		rec.add(capLabel);
+		rec.add(breathButton);
+
 		Container c = lungGUI.getContentPane();
-			c.add(rec);	
+		c.add(rec);	
+
 		lungGUI.addWindowListener(new WindowAdapter(){
-				public void windowClosing(WindowEvent e){
-					main.GUI.setVisible(true);
-				}
-			});	
+			public void windowClosing(WindowEvent e){
+				main.GUI.setVisible(true);
+			}
+		});	
 	}
 
+	/*	
+	pre:
+	post:
+    */
 	@Override
 	public void doFunction(){
 		w += delta;
@@ -77,7 +89,7 @@ public class Lung extends Organ{
 		y -= delta / 2;
 		rec.draw();
 		capLabel.setText("Capacity: " + (((double)w / capacity) * 100) + "%");
-	}
+	}//dofunc
 }//class lung
 
 
