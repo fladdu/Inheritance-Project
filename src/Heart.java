@@ -14,12 +14,21 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 public class Heart extends Organ implements ChangeListener{
+	//instance vars
 	JButton pumpButton = new JButton();
 	JLabel BPMLabel = new JLabel();
 	draw rec = new draw();
 	JSlider weightSlider = new JSlider(JSlider.HORIZONTAL, 0, 1000,450);
 	public static int w = 50 ,h = 50, x = 125, y = 30;
 	double BPM = 0;
+	double rates[] = new double[10];
+	Timer bpm = new Timer(1, new ActionListener(){
+		public void actionPerformed (Event e) {
+			
+		}
+	})
+
+	//construct
 	public Heart(double weight){
 		setWeight(weight);
 		setBodySystem("Circulatory System");
@@ -70,6 +79,7 @@ public class Heart extends Organ implements ChangeListener{
 			}
 		});	
 	}
+
 	@Override
 	public void doFunction(){
 		BPM++;
@@ -81,6 +91,7 @@ public class Heart extends Organ implements ChangeListener{
 		y = 30 - (w - 50)/2;
 		rec.draw();
 	}
+
 	@Override
 	public void stateChanged(ChangeEvent e) {
 		setWeight(weightSlider.getValue());
@@ -92,6 +103,7 @@ public class Heart extends Organ implements ChangeListener{
 		System.out.println(w +" " + getWeight());
 	}
 }
+
 class draw extends JPanel{
 	public draw(){
 		setLayout(null);
