@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -13,6 +15,7 @@ public class Heart extends Organ{
 	JButton pumpButton = new JButton();
 	JLabel BPMLabel = new JLabel();
 	draw rec = new draw();
+	JSlider weightSlider = new JSlider(JSlider.HORIZONTAL, 0, 1000,450);
 	public static int w = 50 ,h = 50, x = 125, y = 30;
 	double BPM = 0;
 	public Heart(double weight){
@@ -21,6 +24,7 @@ public class Heart extends Organ{
 		setLocation("Inside Chest");
 		setEssential(true);
 		
+		weightSlider.setBounds(50, 170, 200,20);
 		BPMLabel.setText("BPM: " + Double.toString(BPM));
 		BPMLabel.setBounds(10,10,70,20);
 		pumpButton.setText("Pump");
@@ -47,10 +51,15 @@ public class Heart extends Organ{
 			rec.draw();	
 			rec.add(BPMLabel);
 			rec.add(pumpButton);
+			rec.add(weightSlider);
 		Container c = heartGUI.getContentPane();
 			c.add(rec);
 			//c.add(heartIMG);
-			
+		heartGUI.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e){
+				main.GUI.setVisible(true);
+			}
+		});	
 	}
 	@Override
 	public void doFunction(){

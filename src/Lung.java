@@ -3,6 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.*;
 public class Lung extends Organ{
 	JButton breathButton = new JButton();
@@ -37,7 +40,7 @@ public class Lung extends Organ{
 		
 		//setting up gui components
 		capLabel.setText("Capacity: " + (((double)w / capacity) * 100) + "%");
-		capLabel.setBounds(10,10,0,20);
+		capLabel.setBounds(10,10,120,20);
 		breathButton.setText("Breath");
 		breathButton.setBounds(115,200,75,20);
 		breathButton.addMouseListener(new MouseAdapter(){
@@ -59,6 +62,11 @@ public class Lung extends Organ{
 			rec.add(breathButton);
 		Container c = lungGUI.getContentPane();
 			c.add(rec);	
+		lungGUI.addWindowListener(new WindowAdapter(){
+				public void windowClosing(WindowEvent e){
+					main.GUI.setVisible(true);
+				}
+			});	
 	}
 
 	@Override

@@ -1,6 +1,8 @@
 import java.awt.*;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.geom.*;
 import javax.swing.*;
 
@@ -41,7 +43,11 @@ public class Arm extends Limb{
 		Container c = armGUI.getContentPane();
 		arm.add(liftButton);
 		c.add(arm);
-		
+		armGUI.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e){
+				main.GUI.setVisible(true);
+			}
+		});	
 	}
 
 	public void doFunction(double input){ //REMOVED INPUT FOR NOW

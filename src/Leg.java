@@ -3,6 +3,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.geom.*;
 import java.util.TimerTask;
 import java.awt.*;
@@ -61,7 +63,11 @@ public class Leg extends Limb{
 					}
 				}
 			});
-		//TimerTask kick = new TimerSchedulePeriod();
+		legGUI.addWindowListener(new WindowAdapter(){
+			public void windowClosing(WindowEvent e){
+				main.GUI.setVisible(true);
+			}
+		});	
 	}
 
 	public void doFunction(double input){

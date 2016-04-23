@@ -3,6 +3,9 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+
 import javax.swing.*;
 public class Stomach extends Organ{
 	JButton eatButton = new JButton();
@@ -64,6 +67,11 @@ public class Stomach extends Organ{
 			rec.add(eatButton);
 		Container c = stomGUI.getContentPane();
 			c.add(rec);	
+		stomGUI.addWindowListener(new WindowAdapter(){
+				public void windowClosing(WindowEvent e){
+					main.GUI.setVisible(true);
+				}
+			});	
 	}
 
 	@Override
