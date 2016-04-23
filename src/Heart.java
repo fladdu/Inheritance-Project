@@ -33,6 +33,7 @@ public class Heart extends Organ implements ChangeListener{
 	    weightSlider.setPaintLabels(true);
 	    weightSlider.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
 	    weightSlider.addChangeListener(this);
+	    weightSlider.setValue((int)getWeight());
 		BPMLabel.setText("BPM: " + Double.toString(BPM));
 		BPMLabel.setBounds(10,10,70,20);
 		pumpButton.setText("Pump");
@@ -44,10 +45,10 @@ public class Heart extends Organ implements ChangeListener{
 					System.out.println(count);
 				}
 				public void mouseReleased (MouseEvent e){
-					w = (int)getWeight()/5;;
+					w = (int)getWeight()/5;
 					h = w;
-					x = 125;
-					y = 30;
+					x = 125 - (w - 50)/2;
+					y = 30 - (w - 50)/2;
 					rec.draw();
 				}
 		});
@@ -76,8 +77,8 @@ public class Heart extends Organ implements ChangeListener{
 		//BPMLabel.setText();
 		w = (int)getWeight()/5 - 10;
 		h = w;
-		x = 130;
-		y = 35;
+		x = 125 - (w - 50)/2;
+		y = 30 - (w - 50)/2;
 		rec.draw();
 	}
 	@Override
@@ -85,6 +86,8 @@ public class Heart extends Organ implements ChangeListener{
 		setWeight(weightSlider.getValue());
 		w = (int)getWeight()/5;
 		h = w;
+		x = 125 - (w - 50)/2;
+		y = 30 - (w - 50)/2;
 		rec.draw();
 		System.out.println(w +" " + getWeight());
 	}

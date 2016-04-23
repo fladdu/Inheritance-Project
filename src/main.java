@@ -22,11 +22,12 @@ public class main {
 		
 		
 		ButtonHeart.setText("Heart");
+		ButtonHeart.setMnemonic('H');
 		ButtonHeart.setMaximumSize(new Dimension(110, 30));
 		ButtonHeart.setAlignmentX(Component.CENTER_ALIGNMENT);
 		ButtonHeart.addActionListener(new ActionListener(){
 				public void actionPerformed(ActionEvent e){
-					Heart heart = new Heart(100);
+					Heart heart = new Heart(500);
 					GUI.setVisible(false);
 				}
 			});
