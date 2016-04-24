@@ -31,8 +31,8 @@ public abstract class Limb extends BodyPart{
 		return length;
 	}
 
-/*	pre:
-	post:
+/*	pre: value is defined
+	post: the Limb's function is performed
 */
 	public abstract void doFunction(double value);
 

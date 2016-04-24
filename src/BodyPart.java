@@ -45,6 +45,8 @@ public abstract class BodyPart{
 	public boolean getEssential(){
 		return isEssential;
 	}
+	//pre: none
+	//post: returns string of contents
 	public String toString(){
 		return null;
 	}

@@ -18,8 +18,8 @@ public class Leg extends Limb{
 	private double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;//ENCAPSULATION
 	
 	/*	
-	pre: parameters are positive + non-zero
-	post: constructs a leg object
+	pre: weight is defeined + non-zero
+	post: constructs Leg object. Properly sets up and lays out all Labels and Buttons on frame. Creates Button and Timer Action Events.
     */
 	public Leg(double strength, double weight, double length){
 
@@ -53,6 +53,7 @@ public class Leg extends Limb{
 		});	
 		
 		infoButton.setText("Info");
+		infoButton.setMnemonic('I');
 		infoButton.setBounds(80,60,60,20);
 		String contents = toString();
 		infoButton.addActionListener(new ActionListener(){
@@ -103,6 +104,8 @@ public class Leg extends Limb{
 		yCord = 17;
 		leg.draw();
 	}
+    //pre:none
+    //post: constructs String with relevant information about the Leg.
     @Override
 	public String toString(){
 		String info = "Name: Leg" + "\nLocation: " + getLocation() + "\nEssential: " + getEssential() + "\nStrength: " + getStrenght() 

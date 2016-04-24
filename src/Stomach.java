@@ -19,8 +19,8 @@ public class Stomach extends Organ{
 	private int capacity,digestSpeed = 1;
 
 	/*	
-	pre: parameters are defeined + >= 0
-	post:
+	pre: weight is defeined + non-zero
+	post: constructs Stomach object. Properly sets up and lays out all Labels and Buttons on frame. Creates Button and Timer Action Events.
     */
 	public Stomach(double weight, int capacity){
 		
