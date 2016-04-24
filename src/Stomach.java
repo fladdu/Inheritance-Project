@@ -10,13 +10,13 @@ import javax.swing.*;
 public class Stomach extends Organ{
 
 	//declaring vars
-	JButton eatButton = new JButton();
-	JButton digestButton = new JButton();
-	JLabel capLabel = new JLabel();
-	drawStomach rec = new drawStomach();
-	JButton infoButton = new JButton();
-	public static int w = 50 ,h = 50, x = 125, y = 40, delta = 0;
-	int capacity,digestSpeed = 1;
+	private JButton eatButton = new JButton();
+	private JButton digestButton = new JButton();
+	private JLabel capLabel = new JLabel();
+	private drawStomach rec = new drawStomach();
+	private JButton infoButton = new JButton();
+	private int w = 50 ,h = 50, x = 125, y = 40, delta = 0;
+	private int capacity,digestSpeed = 1;
 
 	/*	
 	pre: parameters are defeined + >= 0
@@ -42,14 +42,12 @@ public class Stomach extends Organ{
 						y = 40;
 						delta = 0;
 					}
-					System.out.println("								     			"+digestSpeed);
 				}
 		});
 		eatAnim.start();
 		
 		//setting up gui components
 		capLabel.setText("Capacity: " + (((double)w / capacity) * 100) + "%");
-		System.out.println(w + " " + capacity);
 		capLabel.setBounds(10,10,120,20);
 		
 		eatButton.setText("Eateth");
@@ -132,10 +130,8 @@ public class Stomach extends Organ{
 				"\nEssential: " + getEssential() + "\nWeight: " + getWeight() + "\nCapacity: " + capacity;
 		return info;
 	}
-}//class stom
 
-
-class drawStomach extends JPanel{
+	class drawStomach extends JPanel{
 
 	/*	
 	pre: nothing
@@ -160,6 +156,9 @@ class drawStomach extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.RED);
-		g.fillRect(Stomach.x, Stomach.y, Stomach.w, Stomach.h);		
+		g.fillRect(x, y, w, h);		
 	}
 }
+}//class stom
+
+

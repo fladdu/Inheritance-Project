@@ -11,14 +11,14 @@ import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
 public class Arm extends Limb implements ChangeListener{
-	DrawArm arm = new DrawArm();
-	JButton liftButton = new JButton();
-	JSlider strSlider = new JSlider(JSlider.HORIZONTAL, 0, 100 ,20);
-	JButton infoButton = new JButton();
+	private DrawArm arm = new DrawArm();
+	private JButton liftButton = new JButton();
+	private JSlider strSlider = new JSlider(JSlider.HORIZONTAL, 0, 100 ,20);
+	private JButton infoButton = new JButton();
 
-	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm MORE ENCAP
-	static int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;//ENCAPSULATION
-	static int buffer = 1000;//ENCAP
+	private double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm MORE ENCAP
+	private int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;//ENCAPSULATION
+	private int buffer = 1000;//ENCAP
 
 	/*	
 	pre: parameter is positive non-zero
@@ -121,8 +121,7 @@ public class Arm extends Limb implements ChangeListener{
 		return info;
 	}
 
-}
-class DrawArm extends JPanel{
+	class DrawArm extends JPanel{
 
 	/*	
 	pre: nothing
@@ -158,8 +157,8 @@ class DrawArm extends JPanel{
 			Shape rotatedUpper = transform.createTransformedShape(upper);
 		g2d.fill(rotatedUpper);
 		//Second Rectangle	
-		transform.rotate(Arm.angle);
-			transform.translate(Arm.xCord,Arm.yCord);
+		transform.rotate(angle);
+			transform.translate(xCord,yCord);
 			Shape rotatedLower = transform.createTransformedShape(lower);
 		g2d.fill(rotatedLower);
 		g.fillOval(145,105,15,15);
@@ -170,10 +169,10 @@ class DrawArm extends JPanel{
 		Shape rotatedDumbell = transform.createTransformedShape(dumbell);
 		g2d.fill(rotatedDumbell);
 		//I WAS TRYING STUFF TO MAKE IT CENTER vvvvvv//
-		g.fillOval(Arm.xCordD1-(Arm.dumbellSize/2), Arm.yCordD1-(Arm.dumbellSize/2), Arm.dumbellSize, Arm.dumbellSize);//55,155 // 85,20
-		g.fillOval(Arm.xCordD2-(Arm.dumbellSize/2), Arm.yCordD2-(Arm.dumbellSize/2), Arm.dumbellSize, Arm.dumbellSize);//65,115// 122, 27
+		g.fillOval(xCordD1-(dumbellSize/2), yCordD1-(dumbellSize/2), dumbellSize, dumbellSize);//55,155 // 85,20
+		g.fillOval(xCordD2-(dumbellSize/2), yCordD2-(dumbellSize/2), dumbellSize, dumbellSize);//65,115// 122, 27
 		transform.rotate(-0.7);
-		transform.translate(-92 + Arm.buffer, 35);
+		transform.translate(-92 + buffer, 35);
 		Shape rotatedMuscle = transform.createTransformedShape(muscle);
 		g2d.setColor(new Color(242,225,189));
 		g2d.fill(rotatedMuscle);
@@ -184,4 +183,6 @@ class DrawArm extends JPanel{
 		//Pre: Angle: -2.9 Transform: 0,-8
 		//Post: Angle: -1.4 Transfomr: 0, 0
 	}
+}
+
 }

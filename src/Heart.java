@@ -16,16 +16,15 @@ import javax.swing.event.ChangeListener;
 public class Heart extends Organ implements ChangeListener{
 	
 	//instance vars
-	JButton pumpButton = new JButton();
-	JLabel BPMLabel = new JLabel();
-	JButton infoButton = new JButton();
-	draw rec = new draw();
-	JSlider weightSlider = new JSlider(JSlider.HORIZONTAL, 0, 1000,450);
-	public static int w = 50 ,h = 50, x = 125, y = 30;
-	double BPM = 0;
-	double temp = 0;
-	double rates[] = new double[10];
-	JButton heartInfoButton = new JButton();
+	private JButton pumpButton = new JButton();
+	private JLabel BPMLabel = new JLabel();
+	private JButton infoButton = new JButton();
+	private draw rec = new draw();
+	private JSlider weightSlider = new JSlider(JSlider.HORIZONTAL, 0, 1000,450);
+	private int w = 50 ,h = 50, x = 125, y = 30;
+	private double BPM = 0;
+	private double temp = 0;
+	private JButton heartInfoButton = new JButton();
 
 	/*	
 	pre: weight is defeined + non-zero
@@ -82,7 +81,7 @@ public class Heart extends Organ implements ChangeListener{
 		//Timer!!!!!!
 		Timer bpm = new Timer(1000, new ActionListener(){
 			public void actionPerformed (ActionEvent e) {
-					for(int i = 0; i < rates.length - 1; i++){
+					/*for(int i = 0; i < rates.length - 1; i++){
 						rates[i] = rates[i+1];
 					}	
 
@@ -97,7 +96,7 @@ public class Heart extends Organ implements ChangeListener{
 
 					BPM /= 10;
 					BPMLabel.setText("BPM: " + Double.toString(BPM));
-					rec.draw();
+					rec.draw();*/
 			}
 		});
 		bpm.start();
@@ -156,10 +155,8 @@ public class Heart extends Organ implements ChangeListener{
 				"\nEssential: " + getEssential() + "\nWeight: " + getWeight() + "\nBPM: " + BPM;
 		return info;
 	}
-	
-}//class
 
-class draw extends JPanel{
+	class draw extends JPanel{
 
 	/*	
 	pre: nothing
@@ -184,6 +181,8 @@ class draw extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.RED);
-		g.fillRect(Heart.x, Heart.y, Heart.w, Heart.h);		
+		g.fillRect(x, y, w, h);		
 	}
 }
+	
+}//class

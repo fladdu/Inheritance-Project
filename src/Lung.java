@@ -8,12 +8,12 @@ import java.awt.event.WindowEvent;
 import javax.swing.*;
 
 public class Lung extends Organ{
-	JButton breathButton = new JButton();
-	JLabel capLabel = new JLabel();
-	drawLung rec = new drawLung();
-	JButton infoButton = new JButton();
-	public static int w = 50 ,h = 50, x = 125, y = 40, delta = 0;//ENCAPSULATION
-	int capacity;
+	private JButton breathButton = new JButton();
+	private JLabel capLabel = new JLabel();
+	private drawLung rec = new drawLung();
+	private JButton infoButton = new JButton();
+	private int w = 50 ,h = 50, x = 125, y = 40, delta = 0;//ENCAPSULATION
+	private int capacity;
 
 	/*	
 	pre: parameters are defined + non-zero
@@ -106,10 +106,8 @@ public class Lung extends Organ{
 				"\nEssential: " + getEssential() + "\nWeight: " + getWeight() + "\nCapacity: " + capacity;
 		return info;
 	}
-}//class lung
 
-
-class drawLung extends JPanel{
+	class drawLung extends JPanel{
 
 	/*	
 	pre: nothing
@@ -134,6 +132,10 @@ class drawLung extends JPanel{
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.RED);
-		g.fillRect(Lung.x, Lung.y, Lung.w, Lung.h);		
+		g.fillRect(x, y, w, h);		
 	}
 }
+
+}//class lung
+
+

@@ -11,12 +11,11 @@ import java.awt.*;
 import javax.swing.*;
 
 public class Leg extends Limb{
-	private double runningSpeed;
-	JButton kickButton = new JButton();
-	Timer timer;
-	DrawLeg leg = new DrawLeg();
-	JButton infoButton = new JButton();
-	static double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;//ENCAPSULATION
+	private JButton kickButton = new JButton();
+	private Timer timer;
+	private DrawLeg leg = new DrawLeg();
+	private JButton infoButton = new JButton();
+	private double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;//ENCAPSULATION
 	
 	/*	
 	pre: parameters are positive + non-zero
@@ -110,9 +109,8 @@ public class Leg extends Limb{
 				 + "\nWeight: " + getWeight() + "\nLength: " + getLength();
 		return info;
 	}
-}//class
 
-class DrawLeg extends JPanel{
+	class DrawLeg extends JPanel{
 	/*	
 	pre: nothing
 	post: constucts DrawLeg object
@@ -139,7 +137,7 @@ class DrawLeg extends JPanel{
 		g.setColor(new Color(242,225,189));//skin-color
 		Rectangle2D upper = new Rectangle2D.Double(0,0,85,10);
 		Rectangle2D lower = new Rectangle2D.Double(0,0,85,10);//65 110
-		Ellipse2D ball = new Ellipse2D.Double(Leg.xCordBall,Leg.yCordBall, 25, 25);
+		Ellipse2D ball = new Ellipse2D.Double(xCordBall,yCordBall, 25, 25);
 		Ellipse2D foot = new Ellipse2D.Double(80,-15, 10, 25);
 		AffineTransform transform = new AffineTransform();	
 			transform.rotate(1.2);
@@ -147,8 +145,8 @@ class DrawLeg extends JPanel{
 			Shape rotatedUpper = transform.createTransformedShape(upper);
 		g2d.fill(rotatedUpper);
 		//Second Rectangle
-			transform.rotate(Leg.angle);
-			transform.translate(Leg.xCord,Leg.yCord);
+			transform.rotate(angle);
+			transform.translate(xCord,yCord);
 			Shape rotatedLower = transform.createTransformedShape(lower);
 			Shape rotatedFoot = transform.createTransformedShape(foot);
 		g2d.fill(rotatedLower);
@@ -164,3 +162,5 @@ class DrawLeg extends JPanel{
 		//Post: Angle: -1.4 Transfomr: 0, 0
 	}
 }
+}//class
+
