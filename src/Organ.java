@@ -4,16 +4,16 @@ public abstract class Organ extends BodyPart {
 	private String bodySystem;
 	
 	/*	
-	pre:
-	post:
+	pre: bodysystem is initialized, value is defined
+	post: sets bodySystem to value
     */
 	public void setBodySystem(String value){
 		bodySystem = value;
 	}
 	
 	/*	
-	pre:
-	post:
+	pre: bodySystem is defined
+	post: returns bodySystem
     */
 	public String getBodySystem(){
 		return bodySystem;

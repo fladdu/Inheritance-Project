@@ -4,12 +4,13 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class main {
+	
 	static JButton ButtonHeart = new JButton();
 	static JButton ButtonArm = new JButton();
 	static JButton ButtonLeg = new JButton();
 	static JButton ButtonStom = new JButton();
-	static JButton ButtonLung = new JButton();
-	static GUI GUI = new GUI("Black Market");
+	static JButton ButtonLung = new JButton(); 
+	static GUI GUI = new GUI("Black Market");  
 	public static void main(String[] args) {
 		GUI.setVisible(false);
 		JPanel infoPanel = new JPanel(null);

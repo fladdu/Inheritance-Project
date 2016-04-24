@@ -15,6 +15,11 @@ public class Arm extends Limb implements ChangeListener{
 	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm
 	static int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;
 	static int buffer = 1000;
+
+	/*	
+	pre: parameter is positive non-zero
+	post: constructs and Arm object
+    */
 	public Arm(double length){
 		setWeight(strSlider.getValue()/4);
 		setStrength(strSlider.getValue());
@@ -61,6 +66,11 @@ public class Arm extends Limb implements ChangeListener{
 		});	
 	}
 
+	/*	
+	pre: input is positive + non-zero, there is an arm object
+	post: switches arm to 'lifted' if it's 'strong' enough
+    */
+    @Override
 	public void doFunction(double input){ //REMOVED INPUT FOR NOW
 		//TODO: check if input is less than lifting stuff
 		//do stuff
@@ -75,6 +85,10 @@ public class Arm extends Limb implements ChangeListener{
 		arm.draw();
 	}
 
+	/*	
+	pre: arg0 is defined, there is an Arm object
+	post: updates instance variables based on sliders
+    */
 	@Override
 	public void stateChanged(ChangeEvent arg0) {
 		dumbellSize = strSlider.getValue()/2;
@@ -85,12 +99,27 @@ public class Arm extends Limb implements ChangeListener{
 
 }
 class DrawArm extends JPanel{
+
+	/*	
+	pre: nothing
+	post: constucts DrawArm object
+    */
 	public DrawArm(){
 		setLayout(null);
 	}
+
+	/*	
+	pre: there is a DrawArm object
+	post: calls repaint method
+    */
 	public void draw(){
 		repaint();
 	}
+
+	/*	
+	pre: there is a DrawArm object, g is defined
+	post: paints arm + dumbell
+    */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;
