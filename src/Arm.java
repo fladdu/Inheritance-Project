@@ -21,8 +21,8 @@ public class Arm extends Limb implements ChangeListener{
 	private int buffer = 1000;//ENCAP
 
 	/*	
-	pre: parameter is positive non-zero
-	post: constructs and Arm object
+	pre: weight is defeined + non-zero
+	post: constructs Arm object. Properly sets up and lays out all Labels and Buttons on frame. Creates Button Action Events.
     */
 	public Arm(double length){
 		setWeight(strSlider.getValue()/4);
@@ -44,6 +44,7 @@ public class Arm extends Limb implements ChangeListener{
 	    strSlider.addChangeListener(this);
 	    
 	    infoButton.setText("Info");
+	    infoButton.setMnemonic('I');
 		infoButton.setBounds(10,250,60,20);
 		String contents = toString();
 		infoButton.addActionListener(new ActionListener(){
@@ -85,7 +86,7 @@ public class Arm extends Limb implements ChangeListener{
 
 	/*	
 	pre: input is positive + non-zero, there is an arm object
-	post: switches arm to 'lifted'
+	post: switches arm to 'lifted'. Alters variables to move arm graphic.
     */
     @Override
 	public void doFunction(double input){ //REMOVED INPUT FOR NOW
@@ -113,7 +114,8 @@ public class Arm extends Limb implements ChangeListener{
 		setWeight(strSlider.getValue()/4);
 		arm.draw();
 	}
-	
+	//pre: none
+	//post: construct a string with the information of the Arm Class.
 	@Override
 	public String toString(){
 		String info = "Name: Arm" + "\nLocation: " + getLocation() + "\nEssential: " + getEssential() + "\nStrength: " + getStrenght() 
@@ -133,7 +135,7 @@ public class Arm extends Limb implements ChangeListener{
 
 	/*	
 	pre: there is a DrawArm object
-	post: calls repaint method
+	post: calls repaint method(PaintComponent)
     */
 	public void draw(){
 		repaint();
@@ -168,20 +170,14 @@ public class Arm extends Limb implements ChangeListener{
 		transform.translate(67, -60);
 		Shape rotatedDumbell = transform.createTransformedShape(dumbell);
 		g2d.fill(rotatedDumbell);
-		//I WAS TRYING STUFF TO MAKE IT CENTER vvvvvv//
-		g.fillOval(xCordD1-(dumbellSize/2), yCordD1-(dumbellSize/2), dumbellSize, dumbellSize);//55,155 // 85,20
-		g.fillOval(xCordD2-(dumbellSize/2), yCordD2-(dumbellSize/2), dumbellSize, dumbellSize);//65,115// 122, 27
+		g.fillOval(xCordD1-(dumbellSize/2), yCordD1-(dumbellSize/2), dumbellSize, dumbellSize);
+		g.fillOval(xCordD2-(dumbellSize/2), yCordD2-(dumbellSize/2), dumbellSize, dumbellSize);
 		transform.rotate(-0.7);
 		transform.translate(-92 + buffer, 35);
 		Shape rotatedMuscle = transform.createTransformedShape(muscle);
 		g2d.setColor(new Color(242,225,189));
 		g2d.fill(rotatedMuscle);
 		
-		
-		
-		
-		//Pre: Angle: -2.9 Transform: 0,-8
-		//Post: Angle: -1.4 Transfomr: 0, 0
 	}
 }
 

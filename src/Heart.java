@@ -29,7 +29,7 @@ public class Heart extends Organ implements ChangeListener{
 
 	/*	
 	pre: weight is defeined + non-zero
-	post: constructs Heart object
+	post: constructs Heart object. Properly sets up and lays out all Labels and Buttons on frame. Creates Button and Timer Action Events.
     */
 	public Heart(double weight){
 
@@ -55,17 +55,16 @@ public class Heart extends Organ implements ChangeListener{
 		BPMLabel.setBounds(10,10,70,20);
 		
 		infoButton.setText("Info");
+		infoButton.setMnemonic('I');
 		infoButton.setBounds(10,250,60,20);
 		String contents = toString();
 		infoButton.addActionListener(new ActionListener(){
 			public void actionPerformed(ActionEvent e){
-				
 				JOptionPane.showMessageDialog(rec, contents);
 			}
 		});
 		pumpButton.setText("Pump");
 		pumpButton.setBounds(115,200,75,20);
-
 		pumpButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					doFunction();

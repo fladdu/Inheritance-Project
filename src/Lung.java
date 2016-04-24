@@ -16,8 +16,8 @@ public class Lung extends Organ{
 	private int capacity;
 
 	/*	
-	pre: parameters are defined + non-zero
-	post: constructs a Lung object
+	pre: weight is defeined + non-zero
+	post: constructs Lung object. Properly sets up and lays out all Labels and Buttons on frame. Creates Button and Timer Action Events.
     */
 	public Lung(double weight, int capacity){
 		//declaring instance vars
@@ -60,6 +60,7 @@ public class Lung extends Organ{
 		});
 		
 		infoButton.setText("Info");
+		infoButton.setMnemonic('I');
 		infoButton.setBounds(10,250,60,20);
 		String contents = toString();
 		infoButton.addActionListener(new ActionListener(){
@@ -100,6 +101,9 @@ public class Lung extends Organ{
 		rec.draw();
 		capLabel.setText("Capacity: " + (((double)w / capacity) * 100) + "%");
 	}//dofunc
+	
+	//pre: none
+	//post: Constructs a String containing relevant info about the Lung.
 	@Override
 	public String toString(){
 		String info = "Name: Lung" + "\nLocation: " + getLocation() + "\nBody System: " + getBodySystem() + 

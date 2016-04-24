@@ -18,8 +18,8 @@ public class main {
 		JPanel p = new JPanel();
 			p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
 		String welcomeMsg = "           Welcome to the Black Market.\nClick on one of the Body Parts to view their\n"
-							+ "function and information. Some Body Parts\nmay take parameters. Please input valid\n"
-							+ "values to avoid deformed body parts!\n\n                   Press OK to begin.";
+							+ "function and information. Some Body Parts\nmay have Sliders to change a parameter."
+							+ "\nThere is an INFO button on each Body Part. \nEnjoy reading!\n\n                   Press OK to begin.";
 		int input = JOptionPane.showOptionDialog(infoPanel, welcomeMsg, "Black Market", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
 		if (input == JOptionPane.OK_OPTION)
 			GUI.setVisible(true);

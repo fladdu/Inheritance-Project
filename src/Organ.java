@@ -20,8 +20,8 @@ public abstract class Organ extends BodyPart {
 	}
 
 	/*	
-	pre:
-	post:
+	pre: none
+	post: performs Organ's function
     */
 	public abstract void doFunction();
 	
