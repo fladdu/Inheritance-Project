@@ -22,7 +22,7 @@ public class Heart extends Organ implements ChangeListener{
 	public static int w = 50 ,h = 50, x = 125, y = 30;
 	double BPM = 0;
 	double temp = 0;
-	int i = 0;
+	int i = 1;
 
 	//construct
 	public Heart(double weight){
@@ -59,8 +59,8 @@ public class Heart extends Organ implements ChangeListener{
 		Timer bpm = new Timer(1000, new ActionListener(){
 			public void actionPerformed (ActionEvent e) {
 					
-					BMP *= i-1;
-					BPM += temp;
+					BPM *= i-1;
+					BPM += temp * 60;//this here calculates the average BPM over the lifetime of the Heart gui
 					BPM /= i;
 					i++;
 					temp = 0;
