@@ -22,7 +22,7 @@ public class Heart extends Organ implements ChangeListener{
 	public static int w = 50 ,h = 50, x = 125, y = 30;
 	double BPM = 0;
 	double temp = 0;
-	double rates[] = new double[10];
+	int i = 0;
 
 	//construct
 	public Heart(double weight){
@@ -58,20 +58,13 @@ public class Heart extends Organ implements ChangeListener{
 
 		Timer bpm = new Timer(1000, new ActionListener(){
 			public void actionPerformed (ActionEvent e) {
-					for(int i = 0; i < rates.length - 1; i++){
-						rates[i] = rates[i+1];
-					}	
-
-					rates[rates.length - 1] = temp * 60;
+					
+					BMP *= i-1;
+					BPM += temp;
+					BPM /= i;
+					i++;
 					temp = 0;
-					BPM = 0;
 
-					for(int i = 0; i < rates.length; i++){
-						BPM += rates[i];
-
-					}
-
-					BPM /= 10;
 					BPMLabel.setText("BPM: " + Double.toString(BPM));
 					rec.draw();
 			}
