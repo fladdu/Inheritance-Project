@@ -14,7 +14,6 @@ public class main {
 	public static void main(String[] args) {
 		GUI.setVisible(false);
 		JPanel infoPanel = new JPanel(null);
-		infoPanel.setVisible(false);
 		Container c = GUI.getContentPane();
 		JPanel p = new JPanel();
 			p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));

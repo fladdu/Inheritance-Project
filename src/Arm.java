@@ -12,9 +12,10 @@ public class Arm extends Limb implements ChangeListener{
 	DrawArm arm = new DrawArm();
 	JButton liftButton = new JButton();
 	JSlider strSlider = new JSlider(JSlider.HORIZONTAL, 0, 100 ,20);
-	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm
-	static int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;
-	static int buffer = 1000;
+
+	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm MORE ENCAP
+	static int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;//ENCAPSULATION
+	static int buffer = 1000;//ENCAP
 
 	/*	
 	pre: parameter is positive non-zero
@@ -68,7 +69,7 @@ public class Arm extends Limb implements ChangeListener{
 
 	/*	
 	pre: input is positive + non-zero, there is an arm object
-	post: switches arm to 'lifted' if it's 'strong' enough
+	post: switches arm to 'lifted'
     */
     @Override
 	public void doFunction(double input){ //REMOVED INPUT FOR NOW
