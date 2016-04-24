@@ -24,6 +24,7 @@ public class Heart extends Organ implements ChangeListener{
 	private int w = 50 ,h = 50, x = 125, y = 30;
 	private double BPM = 0;
 	private double temp = 0;
+	private int i = 1;
 	private JButton heartInfoButton = new JButton();
 
 	/*	
@@ -81,22 +82,15 @@ public class Heart extends Organ implements ChangeListener{
 		//Timer!!!!!!
 		Timer bpm = new Timer(1000, new ActionListener(){
 			public void actionPerformed (ActionEvent e) {
-					/*for(int i = 0; i < rates.length - 1; i++){
-						rates[i] = rates[i+1];
-					}	
-
-					rates[rates.length - 1] = temp * 60;
+					
+					BPM *= i-1;
+					BPM += temp * 60;//this here calculates the average BPM over the lifetime of the Heart gui
+					BPM /= i;
+					i++;
 					temp = 0;
-					BPM = 0;
 
-					for(int i = 0; i < rates.length; i++){
-						BPM += rates[i];
-
-					}
-
-					BPM /= 10;
 					BPMLabel.setText("BPM: " + Double.toString(BPM));
-					rec.draw();*/
+					rec.draw();
 			}
 		});
 		bpm.start();
