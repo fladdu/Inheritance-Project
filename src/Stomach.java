@@ -14,8 +14,9 @@ public class Stomach extends Organ{
 	JButton digestButton = new JButton();
 	JLabel capLabel = new JLabel();
 	drawStomach rec = new drawStomach();
+	JButton infoButton = new JButton();
 	public static int w = 50 ,h = 50, x = 125, y = 40, delta = 0;
-	int capacity,digestSpeed = 0;
+	int capacity,digestSpeed = 1;
 
 	/*	
 	pre: parameters are defeined + >= 0
@@ -34,13 +35,14 @@ public class Stomach extends Organ{
 		Timer eatAnim = new Timer(300, new ActionListener(){
 				public void actionPerformed(ActionEvent e){
 					doFunction();
-					if (w <= 50){
+					if (w <= 29){
 						w = 50;
 						h = 50;
 						x = 125;
 						y = 40;
 						delta = 0;
 					}
+					System.out.println("								     			"+digestSpeed);
 				}
 		});
 		eatAnim.start();
@@ -49,11 +51,31 @@ public class Stomach extends Organ{
 		capLabel.setText("Capacity: " + (((double)w / capacity) * 100) + "%");
 		System.out.println(w + " " + capacity);
 		capLabel.setBounds(10,10,120,20);
+		
 		eatButton.setText("Eateth");
 		eatButton.setBounds(115,200,75,20);
+		
+		infoButton.setText("Info");
+		infoButton.setBounds(10,250,60,20);
+		String contents = toString();
+		infoButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+				JOptionPane.showMessageDialog(rec, contents);
+			}
+		});
+		
 		digestButton.setText("Digest");
 		digestButton.setBounds(115, 230, 75, 20);
-		
+		digestButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				if(w>=50)
+					digestSpeed++;
+				else
+					digestSpeed=1;
+				delta = -2*digestSpeed;
+			}
+		});
 		eatButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					if (w < capacity){
@@ -65,7 +87,7 @@ public class Stomach extends Organ{
 					}
 				}
 				public void mouseReleased (MouseEvent e){
-					delta = -2;
+					delta = -2*digestSpeed;
 				}
 		});
 		
@@ -78,6 +100,7 @@ public class Stomach extends Organ{
 		rec.add(capLabel);
 		rec.add(eatButton);
 		rec.add(digestButton);
+		rec.add(infoButton);
 		Container c = stomGUI.getContentPane();
 		c.add(rec);	
 		stomGUI.addWindowListener(new WindowAdapter(){
@@ -103,6 +126,12 @@ public class Stomach extends Organ{
 		rec.draw();
 		
 	}//dofunc
+	@Override
+	public String toString(){
+		String info = "Name: Stomach" + "\nLocation: " + getLocation() + "\nBody System: " + getBodySystem() + 
+				"\nEssential: " + getEssential() + "\nWeight: " + getWeight() + "\nCapacity: " + capacity;
+		return info;
+	}
 }//class stom
 
 

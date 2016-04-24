@@ -18,6 +18,7 @@ public class Heart extends Organ implements ChangeListener{
 	//instance vars
 	JButton pumpButton = new JButton();
 	JLabel BPMLabel = new JLabel();
+	JButton infoButton = new JButton();
 	draw rec = new draw();
 	JSlider weightSlider = new JSlider(JSlider.HORIZONTAL, 0, 1000,450);
 	public static int w = 50 ,h = 50, x = 125, y = 30;
@@ -52,6 +53,16 @@ public class Heart extends Organ implements ChangeListener{
 
 		BPMLabel.setText("BPM: " + Double.toString(BPM));
 		BPMLabel.setBounds(10,10,70,20);
+		
+		infoButton.setText("Info");
+		infoButton.setBounds(10,250,60,20);
+		String contents = toString();
+		infoButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+				JOptionPane.showMessageDialog(rec, contents);
+			}
+		});
 		pumpButton.setText("Pump");
 		pumpButton.setBounds(115,200,75,20);
 
@@ -99,6 +110,7 @@ public class Heart extends Organ implements ChangeListener{
 		rec.add(BPMLabel);
 		rec.add(pumpButton);
 		rec.add(weightSlider);
+		rec.add(infoButton);
 		Container c = heartGUI.getContentPane();
 		c.add(rec);
 		
@@ -138,6 +150,13 @@ public class Heart extends Organ implements ChangeListener{
 		y = 30 - (w - 50)/2;
 		rec.draw();
 	}
+	@Override
+	public String toString(){
+		String info = "Name: Heart" + "\nLocation: " + getLocation() + "\nBody System: " + getBodySystem() + 
+				"\nEssential: " + getEssential() + "\nWeight: " + getWeight() + "\nBPM: " + BPM;
+		return info;
+	}
+	
 }//class
 
 class draw extends JPanel{

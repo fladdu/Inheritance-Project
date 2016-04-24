@@ -1,4 +1,6 @@
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.WindowAdapter;
@@ -12,6 +14,7 @@ public class Arm extends Limb implements ChangeListener{
 	DrawArm arm = new DrawArm();
 	JButton liftButton = new JButton();
 	JSlider strSlider = new JSlider(JSlider.HORIZONTAL, 0, 100 ,20);
+	JButton infoButton = new JButton();
 
 	static double angle = -2.9, xCord = 0, yCord = -8; //Variables for Arm MORE ENCAP
 	static int xCordD1 = 67, xCordD2 =77, yCordD1 = 168, yCordD2 = 125, dumbellSize = 20;//ENCAPSULATION
@@ -25,6 +28,7 @@ public class Arm extends Limb implements ChangeListener{
 		setWeight(strSlider.getValue()/4);
 		setStrength(strSlider.getValue());
 		setLength(length);
+		setLocation("Top Two Limbs");
 		setEssential(false);
 		
 		GUI armGUI = new GUI("Arm");
@@ -38,8 +42,19 @@ public class Arm extends Limb implements ChangeListener{
 	    strSlider.setPaintLabels(true);
 	    strSlider.setBorder(BorderFactory.createEmptyBorder(0,0,10,0));
 	    strSlider.addChangeListener(this);
+	    
+	    infoButton.setText("Info");
+		infoButton.setBounds(10,250,60,20);
+		String contents = toString();
+		infoButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+				JOptionPane.showMessageDialog(arm, contents);
+			}
+		});
+	    
 		liftButton.setText("Lift");
-		liftButton.setBounds(115,240,75,20);
+		liftButton.setBounds(115,245,75,20);
 		liftButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					doFunction(0);
@@ -59,6 +74,7 @@ public class Arm extends Limb implements ChangeListener{
 		Container c = armGUI.getContentPane();
 		arm.add(liftButton);
 		arm.add(strSlider);
+		arm.add(infoButton);
 		c.add(arm);
 		armGUI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
@@ -96,6 +112,13 @@ public class Arm extends Limb implements ChangeListener{
 		setStrength(strSlider.getValue());
 		setWeight(strSlider.getValue()/4);
 		arm.draw();
+	}
+	
+	@Override
+	public String toString(){
+		String info = "Name: Arm" + "\nLocation: " + getLocation() + "\nEssential: " + getEssential() + "\nStrength: " + getStrenght() 
+				 + "\nWeight: " + getWeight() + "\nLength: " + getLength();
+		return info;
 	}
 
 }

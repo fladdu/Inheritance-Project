@@ -15,6 +15,7 @@ public class Leg extends Limb{
 	JButton kickButton = new JButton();
 	Timer timer;
 	DrawLeg leg = new DrawLeg();
+	JButton infoButton = new JButton();
 	static double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;//ENCAPSULATION
 	
 	/*	
@@ -27,6 +28,7 @@ public class Leg extends Limb{
 		setStrength(strength);
 		setWeight(weight);
 		setLength(length);
+		setLocation("Bottom Two Limbs");
 		setEssential(false);
 
 		GUI legGUI = new GUI("Arm");
@@ -38,7 +40,6 @@ public class Leg extends Limb{
 
 		kickButton.setText("Kick");
 		kickButton.setBounds(50,20,120,30);
-
 		kickButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					doFunction(0);
@@ -51,7 +52,18 @@ public class Leg extends Limb{
 					leg.draw();
 				}
 		});	
-
+		
+		infoButton.setText("Info");
+		infoButton.setBounds(80,60,60,20);
+		String contents = toString();
+		infoButton.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				
+				JOptionPane.showMessageDialog(leg, contents);
+			}
+		});
+		
+		leg.add(infoButton);
 		leg.add(kickButton);
 
 		timer = new Timer(1, new ActionListener(){
@@ -92,7 +104,13 @@ public class Leg extends Limb{
 		yCord = 17;
 		leg.draw();
 	}
-}
+    @Override
+	public String toString(){
+		String info = "Name: Leg" + "\nLocation: " + getLocation() + "\nEssential: " + getEssential() + "\nStrength: " + getStrenght() 
+				 + "\nWeight: " + getWeight() + "\nLength: " + getLength();
+		return info;
+	}
+}//class
 
 class DrawLeg extends JPanel{
 	/*	
