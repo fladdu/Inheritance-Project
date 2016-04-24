@@ -9,19 +9,20 @@ public class main {
 	static JButton ButtonLeg = new JButton();
 	static JButton ButtonStom = new JButton();
 	static JButton ButtonLung = new JButton();
-	static GUI GUI = new GUI("Black Market Bodypart Store Manager");
+	static GUI GUI = new GUI("Black Market");
 	public static void main(String[] args) {
-		GUI.setVisible(true);
+		GUI.setVisible(false);
 		JPanel infoPanel = new JPanel(null);
 		infoPanel.setVisible(false);
 		Container c = GUI.getContentPane();
 		JPanel p = new JPanel();
 			p.setLayout(new BoxLayout(p, BoxLayout.Y_AXIS));
-		JOptionPane.showMessageDialog(infoPanel, "           Welcome to the Black Market.\nClick on one of the Body Parts to view their\n"
+		String welcomeMsg = "           Welcome to the Black Market.\nClick on one of the Body Parts to view their\n"
 							+ "function and information. Some Body Parts\nmay take parameters. Please input valid\n"
-							+ "values to avoid deformed body parts!\n\n                   Press OK to begin.");
-		
-		
+							+ "values to avoid deformed body parts!\n\n                   Press OK to begin.";
+		int input = JOptionPane.showOptionDialog(infoPanel, welcomeMsg, "Black Market", JOptionPane.CLOSED_OPTION, JOptionPane.INFORMATION_MESSAGE, null, null, null);
+		if (input == JOptionPane.OK_OPTION)
+			GUI.setVisible(true);
 		ButtonHeart.setText("Heart");
 		ButtonHeart.setMnemonic('H');
 		ButtonHeart.setMaximumSize(new Dimension(110, 30));
@@ -33,6 +34,7 @@ public class main {
 				}
 			});
 		ButtonLung.setText("Lung");
+		ButtonLung.setMnemonic('L');
 		ButtonLung.setMaximumSize(new Dimension(110, 30));
 		ButtonLung.setAlignmentX(Component.CENTER_ALIGNMENT);
 		ButtonLung.addActionListener(new ActionListener(){
@@ -42,6 +44,7 @@ public class main {
 				}
 			});
 		ButtonStom.setText("Stomach");
+		ButtonStom.setMnemonic('S');
 		ButtonStom.setMaximumSize(new Dimension(110, 30));
 		ButtonStom.setAlignmentX(Component.CENTER_ALIGNMENT);
 		ButtonStom.addActionListener(new ActionListener(){
@@ -51,6 +54,7 @@ public class main {
 				}
 			});
 		ButtonArm.setText("Arm");
+		ButtonArm.setMnemonic('A');
 		ButtonArm.setMaximumSize(new Dimension(110, 30));
 		ButtonArm.setAlignmentX(Component.CENTER_ALIGNMENT);
 		ButtonArm.addActionListener(new ActionListener(){
@@ -59,7 +63,8 @@ public class main {
 					GUI.setVisible(false);
 				}
 			});
-		ButtonLeg.setText("Leg");
+		ButtonLeg.setText("Foot");
+		ButtonLeg.setMnemonic('F');
 		ButtonLeg.setMaximumSize(new Dimension(110, 30));
 		ButtonLeg.setAlignmentX(Component.CENTER_ALIGNMENT);
 		ButtonLeg.addActionListener(new ActionListener(){
@@ -68,7 +73,7 @@ public class main {
 					GUI.setVisible(false);
 				}
 			});
-		p.add(Box.createRigidArea(new Dimension(200,15)));
+		p.add(Box.createRigidArea(new Dimension(240,15)));
 		p.add(ButtonHeart);
 		p.add(Box.createRigidArea(new Dimension(0,15)));
 		p.add(ButtonArm);

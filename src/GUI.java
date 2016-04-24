@@ -5,7 +5,7 @@ import java.util.*;
 public class GUI extends JFrame{
 	public GUI(String name){
 		setTitle(name);
-		setSize(720,600);
+		setSize(250,300);
 		setLocation(300,20);
 		
 	}

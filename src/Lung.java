@@ -78,7 +78,7 @@ public class Lung extends Organ{
 	}
 
 	/*	
-	pre:
+	pre: 
 	post:
     */
 	@Override

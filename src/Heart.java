@@ -24,6 +24,7 @@ public class Heart extends Organ implements ChangeListener{
 	double BPM = 0;
 	double temp = 0;
 	double rates[] = new double[10];
+	JButton heartInfoButton = new JButton();
 
 	/*	
 	pre:
@@ -36,6 +37,9 @@ public class Heart extends Organ implements ChangeListener{
 		setBodySystem("Circulatory System");
 		setLocation("Inside Chest");
 		setEssential(true);
+		
+		pumpButton.setText("Heart Info");
+		pumpButton.setBounds(115,200,75,20);
 		
 		weightSlider.setBounds(50, 150, 200,50);
 		weightSlider.setMajorTickSpacing(250);
