@@ -18,8 +18,8 @@ public class Leg extends Limb{
 	static double angle = 0.6, xCord = 70, yCord = -45, xCordBall = 105, yCordBall = 250;//ENCAPSULATION
 	
 	/*	
-	pre:
-	post:
+	pre: parameters are positive + non-zero
+	post: constructs a leg object
     */
 	public Leg(double strength, double weight, double length){
 
@@ -73,7 +73,7 @@ public class Leg extends Limb{
 					}
 				}
 			});
-		
+
 		legGUI.addWindowListener(new WindowAdapter(){
 			public void windowClosing(WindowEvent e){
 				main.GUI.setVisible(true);
@@ -82,9 +82,10 @@ public class Leg extends Limb{
 	}
 
 	/*	
-	pre:
-	post:
+	pre: there is a leg object
+	post: sets initial ball coords + rotation
     */
+    @Override
 	public void doFunction(double input){
 		angle = -0.2; 
 		xCord = 80;
@@ -94,12 +95,26 @@ public class Leg extends Limb{
 }
 
 class DrawLeg extends JPanel{
+	/*	
+	pre: nothing
+	post: constucts DrawLeg object
+    */
 	public DrawLeg(){
 		setLayout(null);
 	}
+
+	/*	
+	pre: there is a DrawLeg object
+	post: calls repaint method
+    */
 	public void draw(){
 		repaint();
 	}
+
+	/*	
+	pre: there is a DrawLeg object
+	post: paints the leg and ball
+    */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;

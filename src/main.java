@@ -4,12 +4,14 @@ import java.awt.event.ActionListener;
 import javax.swing.*;
 
 public class main {
+	
 	static JButton ButtonHeart = new JButton();
 	static JButton ButtonArm = new JButton();
 	static JButton ButtonLeg = new JButton();
 	static JButton ButtonStom = new JButton();
 	static JButton ButtonLung = new JButton();
 	static GUI GUI = new GUI("Black Market Bodypart Store Manager");
+
 	public static void main(String[] args) {
 		GUI.setVisible(true);
 		JPanel infoPanel = new JPanel(null);

@@ -19,8 +19,8 @@ public class Arm extends Limb implements ChangeListener{
 	static int buffer = 1000;//ENCAP
 
 	/*	
-	pre:
-	post:
+	pre: parameter is positive non-zero
+	post: constructs and Arm object
     */
 	public Arm(double length){
 		//setting vars
@@ -74,8 +74,8 @@ public class Arm extends Limb implements ChangeListener{
 	}
 
 	/*	
-	pre:
-	post:
+	pre: input is positive + non-zero, there is an arm object
+	post: switches arm to 'lifted' if it's 'strong' enough
     */
     @Override
 	public void doFunction(double input){ //REMOVED INPUT FOR NOW
@@ -93,8 +93,8 @@ public class Arm extends Limb implements ChangeListener{
 	}
 
 	/*	
-	pre:
-	post:
+	pre: arg0 is defined, there is an Arm object
+	post: updates instance variables based on sliders
     */
 	@Override
 	public void stateChanged(ChangeEvent arg0) {
@@ -108,12 +108,27 @@ public class Arm extends Limb implements ChangeListener{
 
 
 class DrawArm extends JPanel{
+
+	/*	
+	pre: nothing
+	post: constucts DrawArm object
+    */
 	public DrawArm(){
 		setLayout(null);
 	}
+
+	/*	
+	pre: there is a DrawArm object
+	post: calls repaint method
+    */
 	public void draw(){
 		repaint();
 	}
+
+	/*	
+	pre: there is a DrawArm object, g is defined
+	post: paints arm + dumbell
+    */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		Graphics2D g2d = (Graphics2D) g;

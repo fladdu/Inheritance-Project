@@ -17,7 +17,7 @@ public class Stomach extends Organ{
 	int capacity;
 
 	/*	
-	pre:
+	pre: parameters are defeined + >= 0
 	post:
     */
 	public Stomach(double weight, int capacity){
@@ -54,7 +54,7 @@ public class Stomach extends Organ{
 		eatButton.addMouseListener(new MouseAdapter(){
 				public void mousePressed(MouseEvent e){
 					if (w < capacity){
-						int food = 10/*(int) (Math.random() * 5 + 1)*/;
+						int food = (int) (Math.random() * 5 + 1);
 						w += food;
 						h += food;
 						x -= food / 2;
@@ -84,8 +84,8 @@ public class Stomach extends Organ{
 	}
 
 	/*	
-	pre:
-	post:
+	pre: there is a Stomach object
+	post: randomly (40% of the time) decreases the size of the stomach
     */
 	@Override
 	public void doFunction(){
@@ -103,12 +103,27 @@ public class Stomach extends Organ{
 
 
 class drawStomach extends JPanel{
+
+	/*	
+	pre: nothing
+	post: constructs a drawStomach object
+    */
 	public drawStomach(){
 		setLayout(null);
 	}
+
+	/*	
+	pre: there is a drawStomach object
+	post: calls the repaint method
+    */
 	public void draw(){
 		repaint();
 	}
+
+	/*	
+	pre: there is a Stomach object
+	post: paints the stomach
+    */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.RED);

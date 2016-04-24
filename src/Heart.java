@@ -26,8 +26,8 @@ public class Heart extends Organ implements ChangeListener{
 	double rates[] = new double[10];
 
 	/*	
-	pre:
-	post:
+	pre: weight is defeined + non-zero
+	post: constructs Heart object
     */
 	public Heart(double weight){
 
@@ -108,8 +108,8 @@ public class Heart extends Organ implements ChangeListener{
 	}
 
 	/*	
-	pre:
-	post:
+	pre: there is a Heart object
+	post: 'contracts' the heart
     */
 	@Override
 	public void doFunction(){
@@ -122,8 +122,8 @@ public class Heart extends Organ implements ChangeListener{
 	}
 
 	/*	
-	pre:
-	post:
+	pre: there is a Heart object
+	post: updates image based on slider values
     */
 	@Override
 	public void stateChanged(ChangeEvent e) {
@@ -133,17 +133,31 @@ public class Heart extends Organ implements ChangeListener{
 		x = 125 - (w - 50)/2;
 		y = 30 - (w - 50)/2;
 		rec.draw();
-		System.out.println(w +" " + getWeight());
 	}
 }//class
 
 class draw extends JPanel{
+
+	/*	
+	pre: nothing
+	post: constructs a draw object
+    */
 	public draw(){
 		setLayout(null);
 	}
+
+	/*	
+	pre: there is a draw object
+	post: calls the repaint method
+    */
 	public void draw(){
 		repaint();
 	}
+
+	/*	
+	pre: there is a Heart + draw object
+	post: paints the heart
+    */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.RED);

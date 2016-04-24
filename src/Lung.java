@@ -11,12 +11,12 @@ public class Lung extends Organ{
 	JButton breathButton = new JButton();
 	JLabel capLabel = new JLabel();
 	drawLung rec = new drawLung();
-	public static int w = 50 ,h = 50, x = 125, y = 40, delta = 0;
+	public static int w = 50 ,h = 50, x = 125, y = 40, delta = 0;//ENCAPSULATION
 	int capacity;
 
 	/*	
-	pre:
-	post:
+	pre: parameters are defined + non-zero
+	post: constructs a Lung object
     */
 	public Lung(double weight, int capacity){
 		//declaring instance vars
@@ -78,8 +78,8 @@ public class Lung extends Organ{
 	}
 
 	/*	
-	pre:
-	post:
+	pre: there is a Lung object, delta is defined
+	post: changes the size of the lung by 'delta'
     */
 	@Override
 	public void doFunction(){
@@ -94,12 +94,27 @@ public class Lung extends Organ{
 
 
 class drawLung extends JPanel{
+
+	/*	
+	pre: nothing
+	post: constructs a drawLung objct
+    */
 	public drawLung(){
 		setLayout(null);
 	}
+
+	/*	
+	pre: there is a drawLung object
+	post: calls the repaint method
+    */
 	public void draw(){
 		repaint();
 	}
+
+	/*	
+	pre: there is a drawLung object
+	post: paints the lung
+    */
 	public void paintComponent(Graphics g){
 		super.paintComponent(g);
 		g.setColor(Color.RED);
